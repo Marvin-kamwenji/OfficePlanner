@@ -1,35 +1,1083 @@
 <!DOCTYPE html>
-<html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+        lang="en">
+
+
+
 <head>
-    <title>Office Meeting Planner</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Landing PAGE Html5 Template">
+
+    <meta name="keywords" content="landing,startup,flat">
+
+    <meta name="author" content="Made By GN DESIGNS">
+
+
+
+    <title>Tracom meeting office planner</title>
+
+
+
+    <!-- // PLUGINS (css files) // -->
+
+    <link th:href="@{/assets/js/plugins/bootsnav_files/skins/color.css}" rel="stylesheet">
+
+    <link th:href="@{/assets/js/plugins/bootsnav_files/css/animate.css}" rel="stylesheet">
+
+    <link th:href="@{/assets/js/plugins/bootsnav_files/css/bootsnav.css}" rel="stylesheet">
+
+    <link th:href="@{/assets/js/plugins/bootsnav_files/css/overwrite.css}" rel="stylesheet">
+
+    <link th:href="@{/assets/js/plugins/owl-carousel/owl.carousel.css}" rel="stylesheet">
+
+    <link th:href="@{/assets/js/plugins/owl-carousel/owl.theme.css}" rel="stylesheet">
+
+    <link th:href="@{/assets/js/plugins/owl-carousel/owl.transitions.css}" rel="stylesheet">
+
+    <link th:href="@{/assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/magnific-popup.css}" rel="stylesheet">
+
+    <!--// ICONS //-->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--// BOOTSTRAP & Main //-->
+
+    <link th:href="@{/assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css}" rel="stylesheet">
+
+    <link th:href="@{/assets/css/main.css}" rel="stylesheet">
+<!--    <link href="assets/css/main.css" rel="stylesheet">-->
+
 </head>
+
+
+
 <body>
-<h2>Login</h2>
-
-<div class="login">
-    <form id="login" method="GET" action="login.php">
-
-        <label><b>User Name</b></label>
-        <input type="text" name="Uname" id="Uname" placeholder="Username">
-        <br><br>
-
-        <label><b>Password</b></label>
-        <input type="password" name="Pass" id="Pass" placeholder="Password">
-        <br><br>
-
-        Forgot <a href="#">Password</a>
-        <br><br>
-
-        <input type="checkbox" id="check">
-        <span>Remember me</span>
-        <br><br>
 
 
-        <input type="button" name="log" id="log" value="Log in">
 
-    </form>
+<!--========================================
+
+       Preloader
+
+========================================-->
+
+<div class="page-preloader">
+
+    <div class="spinner">
+
+        <div class="rect1"></div>
+
+        <div class="rect2"></div>
+
+        <div class="rect3"></div>
+
+        <div class="rect4"></div>
+
+        <div class="rect5"></div>
+
+    </div>
+
 </div>
 
+<!--========================================
+
+       Header
+
+========================================-->
+
+
+
+<!--//** Navigation**//-->
+
+<nav class="navbar navbar-default navbar-fixed white no-background bootsnav navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+
+
+    <div class="container">
+
+        <!-- Start Header Navigation -->
+
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+
+                <i class="fa fa-bars"></i>
+
+            </button>
+
+            <div class="header-caption">
+
+                <img th:src="@{/assets/img/tracom-logo.svg}" class="img-responsive center-block" alt="logo">
+            </div>
+        </div>
+
+        <!-- End Header Navigation -->
+
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <div class="collapse navbar-collapse" id="navbar-menu">
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="active scroll"><a href="#home">Home</a></li>
+
+                <li class="scroll"><a href="#about">About</a></li>
+
+                <li class="scroll"><a href="#services">Services</a></li>
+
+                <li class="scroll"><a href="#contact">Contact</a></li>
+
+                <li class="button-holder">
+
+                    <button type="button" class="btn btn-blue navbar-btn" data-toggle="modal" data-target="#SignIn">Sign in</button>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- /.navbar-collapse -->
+
+    </div>
+
+</nav>
+
+
+
+<!--//** Banner**//-->
+
+<section id="home">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Introduction -->
+
+            <div class="col-md-6 caption">
+
+                <h1>Welcome To Tracom Meeting Planner</h1>
+
+                <h2>
+
+                    Hi,
+
+                    <span class="animated-text"></span>
+
+                    <span class="typed-cursor"></span>
+
+                </h2>
+
+                <p>At Tracom we deliver to you a 360 degree solution. We develop the payment software that you need, place it in the latest and most reliable terminal and provide the maintenance to keep them both running.</p>
+
+                <a href="#" class="btn btn-transparent">Get Started</a>
+
+            </div>
+
+            <!-- Sign Up -->
+
+            <div class="col-md-5 col-md-offset-1">
+                <div class="signup">
+                    <form class="signup-form">
+
+                        <h2 class="text-center">Create Account</h2>
+
+                        <hr>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="First Name" required="required">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="Last Name" required="required">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <input type="email" class="form-control" placeholder="Email Address" required="required">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="Organization" required="required">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="Password" required="required">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="Confirm Password" required="required">
+
+                        </div>
+
+                        <div class="form-group text-center">
+
+                            <button type="submit" class="btn btn-blue btn-block">Create Account</button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--========================================
+
+       About Us
+
+========================================-->
+
+
+
+<section id="about" class="section-padding">
+
+    <div class="container">
+
+        <h2>About Us</h2>
+
+        <p>As the competitive landscape continues to intensify, more and more businesses require cost-effective software solutions that enhance their business processes and result in reduced operating costs. Tracom was incorporated to fill this market gap by providing multi-level solutions with an in-depth knowledge of local companies and their requirements.</p>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="icon-box">
+
+                    <i class="material-icons">business</i>
+
+                    <h4>Corporate Profile</h4>
+
+                    <p>Tracom Services Limited is a limited liability company incorporated in Kenya.</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="icon-box">
+
+                    <i class="material-icons">people</i>
+
+                    <h4>Our Team</h4>
+
+                    <p>We pride ourselves on having a team of highly-skilled experts</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="icon-box">
+
+                    <i class="material-icons">personsearch</i>
+
+                    <h4>Careers</h4>
+
+                    <p>The solutions we offer and our unique market niche have created opportunities for skills development in a demand-driven area of IT solutions in Africa.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--========================================
+
+       Story
+
+========================================-->
+
+
+
+<section id="story">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <!-- Img -->
+
+            <div class="col-md-6 story-bg">
+
+            </div>
+
+            <!-- Story Caption -->
+
+            <div class="col-md-6">
+
+                <div class="story-content">
+
+                    <h2>The Planner</h2>
+
+                    <p class="story-quote">
+
+                        Collaborate with your team using office planner
+
+                    </p>
+
+                    <div class="story-text">
+
+                        <p>Every plan has a calendar, which is helpful for capturing events that people working on the plan should attend.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--========================================
+
+       Services
+
+========================================-->
+
+
+
+<section id="services" class="section-padding">
+
+    <div class="container">
+
+        <h2>Our Services</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, optio.</p>
+
+        <div class="row">
+
+            <div class="col-md-3">
+
+                <div class="icon-box">
+
+                    <i class="material-icons">mood</i>
+
+                    <h4>Make Life Easier</h4>
+
+                    <p> help you maximize registrations, while minimizing the resources that may otherwise have been needed.</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="icon-box">
+
+                    <i class="material-icons">alarm</i>
+
+                    <h4>Saves Time</h4>
+
+                    <p>You’ll be able to grab a quick snapshot of what’s happening, who’s registered, who’s paid, who went on to attend and more.</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="icon-box">
+
+                    <i class="material-icons">storage</i>
+
+                    <h4> Improved Data Collection</h4>
+
+                    <p>It is difficult to keep a manual log of attendee’s details and preferences such as who has been invited.</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="icon-box">
+
+                    <i class="material-icons">analytics</i>
+
+                    <h4>Analyse And Improve</h4>
+
+                    <p>Gain feedback from attendees and generate reports so that you can analyse what went well and where you could improve for next times.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--========================================
+
+       Features
+
+========================================-->
+
+
+
+<section id="features">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <h2>Awesome Features</h2>
+
+                <p>A solution that comes with the office meeting planner is automation of the scheduling process and tracking the availability of meeting rooms.</p>
+
+                <hr>
+
+                <div class="feat-media">
+
+                    <!-- Feature -->
+
+                    <div class="media">
+
+                        <div class="media-left">
+
+                            <a href="#">
+
+                                <i class="material-icons">computer</i>
+
+                            </a>
+
+                        </div>
+
+                        <div class="media-body">
+
+                            <h4 class="media-heading">Automated scheduling process</h4>
+
+                            <p>To automate the process of scheduling meeting rooms.</p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Feature -->
+
+                    <div class="media">
+
+                        <div class="media-left">
+
+                            <a href="#">
+
+                                <i class="material-icons">access_time</i>
+
+                            </a>
+
+                        </div>
+
+                        <div class="media-body">
+
+                            <h4 class="media-heading">Tracking meeting rooms</h4>
+
+                            <p>Tracking the availability of meeting rooms.</p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Feature -->
+
+                    <div class="media">
+
+                        <div class="media-left">
+
+                            <a href="#">
+
+                                <i class="material-icons">announcement</i>
+
+                            </a>
+
+                        </div>
+
+                        <div class="media-body">
+
+                            <h4 class="media-heading">Notifications of upcoming meetings</h4>
+
+                            <p>Notify upcoming meeting within 15 minutes to meeting time by email and SMS.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Features Img -->
+
+            <div class="col-md-6 col-md-push-2">
+
+                <img th:src="@{/assets/img/dashboard.png}" class="img-responsive" alt="feature">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--========================================
+
+       Team
+
+========================================-->
+
+
+
+<section id="team" class="section-padding">
+
+    <div class="container">
+
+        <h2>Team Of Professionals</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, optio.</p>
+
+        <div class="row">
+
+            <div class="col-md-6 col-lg-3">
+
+                <!--**Team-Member**-->
+
+                <div class="thumbnail team-member">
+
+                    <img th:src="@{/assets/img/team-1.jpg}" class="img-responsive img-circle" alt="team-1">
+
+                    <div class="caption">
+
+                        <h4>Kelvin Kimani</h4>
+
+                        <h6>Software Engineer</h6>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+                        <hr>
+
+                        <div class="team-social">
+
+                            <ul class="liste-unstyled">
+
+                                <li><a href="#facebook"><i class="fa fa-facebook"></i></a></li>
+
+                                <li><a href="#twitter"><i class="fa fa-twitter"></i></a></li>
+
+                                <li><a href="https://www.linkedin.com/in/kelvinkimani/"><i class="fa fa-linkedin"></i></a></li>
+
+                                <li><a href="#instagram"><i class="fa fa-instagram"></i></a></li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+
+                <!--**Team-Member**-->
+
+                <div class="thumbnail team-member">
+
+                    <img th:src="@{/assets/img/team-2.jpg}" class="img-responsive img-circle" alt="team-2">
+
+                    <div class="caption">
+
+                        <h4>Anthony Keoro</h4>
+
+                        <h6>Web Designer</h6>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+                        <hr>
+
+                        <div class="team-social">
+
+                            <ul class="liste-unstyled">
+
+                                <li><a href="#facebook"><i class="fa fa-facebook"></i></a></li>
+
+                                <li><a href="#twitter"><i class="fa fa-twitter"></i></a></li>
+
+                                <li><a href="https://www.linkedin.com/in/anthony-keoro-0b0759207/"><i class="fa fa-linkedin"></i></a></li>
+
+                                <li><a href="#instagram"><i class="fa fa-instagram"></i></a></li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+
+                <!--**Team-Member**-->
+
+                <div class="thumbnail team-member">
+
+                    <img th:src="@{/assets/img/team-3.jpg}" class="img-responsive img-circle" alt="team-3">
+
+                    <div class="caption">
+
+                        <h4>Anthony Murugu</h4>
+
+                        <h6>Software Engineer</h6>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+                        <hr>
+
+                        <div class="team-social">
+
+                            <ul class="liste-unstyled">
+
+                                <li><a href="#facebook"><i class="fa fa-facebook"></i></a></li>
+
+                                <li><a href="#twitter"><i class="fa fa-twitter"></i></a></li>
+
+                                <li><a href="https://www.linkedin.com/in/antony-murugu-783894120/"><i class="fa fa-linkedin"></i></a></li>
+
+                                <li><a href="#instagram"><i class="fa fa-instagram"></i></a></li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+
+                <!--**Team-Member**-->
+
+                <div class="thumbnail team-member">
+
+                    <img th:src="@{/assets/img/team-4.jpg}" class="img-responsive img-circle" alt="team-4">
+
+                    <div class="caption">
+
+                        <h4>Ian Wairimu</h4>
+
+                        <h6>Photographer</h6>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+                        <hr>
+
+                        <div class="team-social">
+
+                            <ul class="liste-unstyled">
+
+                                <li><a href="#facebook"><i class="fa fa-facebook"></i></a></li>
+
+                                <li><a href="#twitter"><i class="fa fa-twitter"></i></a></li>
+
+                                <li><a href="https://www.linkedin.com/in/ian-wairimu-00578a21b/"><i class="fa fa-linkedin"></i></a></li>
+
+                                <li><a href="#instagram"><i class="fa fa-instagram"></i></a></li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--========================================
+
+       Clients
+
+========================================-->
+
+
+
+<section id="clients" class="section-padding">
+
+    <div class="container">
+
+        <div class="row">
+
+            <h2>Clients Trust Us</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, optio.</p>
+
+            <!--// Clients Images //-->
+
+            <div class="clients-images">
+
+                <div id="owl-clients">
+
+                    <div class="item"><img th:src="@{/assets/img/clients/c_logo01.png}" class="center-block" alt="client"></div>
+
+                    <div class="item"><img th:src="@{/assets/img/clients/c_logo02.png}" class="center-block" alt="client"></div>
+
+                    <div class="item"><img th:src="@{/assets/img/clients/c_logo03.png}" class="center-block" alt="client"></div>
+
+                    <div class="item"><img th:src="@{/assets/img/clients/c_logo04.png}" class="center-block" alt="client"></div>
+
+                    <div class="item"><img th:src="@{/assets/img/clients/c_logo05.png}" class="center-block" alt="client"></div>
+
+                    <div class="item"><img th:src="@{/assets/img/clients/c_logo06.png}" class="center-block" alt="client" ></div>
+
+                </div>
+
+            </div>
+
+            <!--// Clients Testimonials //-->
+
+            <div id="owl-testimonials">
+
+                <div class="item">
+
+                    <i class="material-icons">favorite</i>
+
+                    <p class="quote">Vivamus quam neque, aliquet ac faucibus ut, vestibulum. Nulla quis laoreet diam. Donec sed egestas ex, nec facilisis ante. Vivamus imperdiet odio. Cras luctus interdum sodales. Quisque quis odio dui.</p>
+
+                    <h4>-Meshack Karori, KCB Bank.</h4>
+
+                </div>
+
+                <div class="item">
+
+                    <i class="material-icons">stars</i>
+
+                    <p class="quote">Vivamus quam neque, aliquet ac faucibus ut, vestibulum. Nulla quis laoreet diam. Donec sed egestas ex, nec facilisis ante. Vivamus imperdiet odio. Cras luctus interdum sodales. Quisque quis odio dui.</p>
+
+                    <h4>-Ezra Langat, GulfAfrican bank.</h4>
+
+                </div>
+
+                <div class="item">
+
+                    <i class="material-icons">mood</i>
+
+                    <p class="quote">Vivamus quam neque, aliquet ac faucibus ut, vestibulum. Nulla quis laoreet diam. Donec sed egestas ex, nec facilisis ante. Vivamus imperdiet odio. Cras luctus interdum sodales. Quisque quis odio dui.</p>
+
+                    <h4>-Denis Rono, Equity Bank.</h4>
+
+                </div>
+
+                <div class="item">
+
+                    <i class="material-icons">mood</i>
+
+                    <p class="quote">Vivamus quam neque, aliquet ac faucibus ut, vestibulum. Nulla quis laoreet diam. Donec sed egestas ex, nec facilisis ante. Vivamus imperdiet odio. Cras luctus interdum sodales. Quisque quis odio dui.</p>
+
+                    <h4>-Achi Lore, Sidian Bank.</h4>
+
+                </div>
+
+
+
+                <div class="item">
+
+                    <i class="material-icons">mood</i>
+
+                    <p class="quote">Vivamus quam neque, aliquet ac faucibus ut, vestibulum. Nulla quis laoreet diam. Donec sed egestas ex, nec facilisis ante. Vivamus imperdiet odio. Cras luctus interdum sodales. Quisque quis odio dui.</p>
+
+                    <h4>-Nicholas Nzovia, Total.</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<!--========================================
+
+       Contact
+
+========================================-->
+
+
+
+<section id="contact" class="section-padding">
+
+    <div class="container">
+
+        <h2>Contact Us</h2>
+
+        <p>Kenya (Head office)</p>
+
+        <p>Tracom Services Limited</p>
+
+    </div>
+
+    <!-- Contact Info -->
+
+    <div class="container contact-info">
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="icon-box">
+
+                    <i class="material-icons">place</i>
+
+                    <h4>Address</h4>
+
+                    <p>P.O. Box 25749 00603 Nairobi
+                        Springette office park, Nairobi</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="icon-box">
+
+                    <i class="material-icons">phone</i>
+
+                    <h4>Call Us On</h4>
+
+                    <p>+254 20 242 9692</p>
+                    <p>Nairobi, Kenya</p>
+
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="icon-box">
+
+                    <i class="material-icons">email</i>
+
+                    <h4>Email us on</h4>
+
+                    <p>sales@tracom.co.ke</p>
+
+                    <p>services@tracom.co.ke</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Google Map -->
+
+    <div id="map"></div>
+
+</section>
+
+
+
+<!--========================================
+
+       Footer
+
+========================================-->
+
+
+
+<footer>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="footer-caption">
+
+                <img src="assets/img/logo.png" class="img-responsive center-block" alt="logo">
+
+                <hr>
+
+                <h5 class="pull-left">&copy;2021 Tracom meeting office planner. All rights reserved.</h5>
+
+                <ul class="liste-unstyled pull-right">
+
+                    <li><a href="https://www.facebook.com/Tracom-Services-Limited-273644349695201/"><i class="fa fa-facebook"></i></a></li>
+
+                    <li><a href="https://twitter.com/TracomServices"><i class="fa fa-twitter"></i></a></li>
+
+                    <li><a href="https://www.linkedin.com/company/tracom-services/mycompany/"><i class="fa fa-linkedin"></i></a></li>
+
+                    <li><a href="https://instagram.com/TracomServices"><i class="fa fa-instagram"></i></a></li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!--========================================
+
+       Modal
+
+========================================-->
+
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="SignIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="signup">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                    <h4 class="modal-title text-center" id="myModalLabel">Login</h4>
+
+                </div>
+
+                <div class="modal-body">
+
+
+                    <form class="signup-form">
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="Email" required="required">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="Password" required="required">
+
+                        </div>
+
+                        <div class="form-group text-center">
+
+                            <button type="submit" class="btn btn-blue btn-block">Log In</button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="modal-footer text-center">
+
+                    <a href="#">Forgot your password /</a>
+
+                    <a href="#">Login</a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script th:src="@{/assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
+
+<script th:src="@{/assets/js/plugins/owl-carousel/owl.carousel.min.js}"></script>
+
+<script th:src="@{/assets/js/plugins/bootsnav_files/js/bootsnav.js}"></script>
+
+<script th:src="@{/assets/js/plugins/typed.js-master/typed.js-master/dist/typed.min.js}"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script th:src="@{/assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/jquery.magnific-popup.js}"></script>
+
+<script th:src="@{/assets/js/main.js}"></script>
+
 </body>
+
+
+
 </html>

@@ -1,0 +1,258 @@
+@charset "utf-8";
+
+/*------------------------------------------------------------------
+
+    Main Style Stylesheet
+    Project:        Vortex. |  StartUp Landing Page Template
+    Version:        1.0
+    Author:         Gnawi Themes
+    Last change:    8/29/2016
+    Primary use:    Landing,Startup and Showcase.
+
+-------------------------------------------------------------------*/
+
+
+/*-- Imports (only visible on scss file) --*/
+
+@import "partials/base";
+@import "partials/typography";
+@import "partials/colors";
+@import "partials/buttons";
+@import "partials/responsive";
+
+/*========================================
+           Header
+========================================*/
+
+// Navigation
+nav.navbar.bootsnav.navbar-fixed {
+    // Navbar Logo
+    .navbar-brand {
+        padding: 10px 15px;
+    }
+    // Navbar Links
+    ul.nav > li > a {
+        padding: 35px 15px;
+    }
+    .button-holder {
+        padding: 15px 0;
+        margin-left: 40px;
+    }
+}
+
+// Banner
+#home {
+    position: relative;
+    padding: 190px 0px 120px 0px;
+    background: url(../img/banner.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    .caption {
+        padding: 60px 0;
+        h2 {
+            color: $white;
+        }
+        p {
+            font-size: 18px;
+            margin-top: 25px;
+            color: $white;
+        }
+        .btn {
+            margin-top: 25px;
+        }
+        .btn-blue {
+            margin-left: 15px;
+            i {
+                position: relative;
+                top: 5px;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+// Particles Js
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+
+/*========================================
+           About Us
+========================================*/
+
+#about {
+    text-align: center;
+    .icon-box {
+        margin-top: 60px;
+        i {
+            font-size: 46px;
+            color: $red-primary;
+        }
+        h4 {
+            margin: 25px 0;
+        }
+    }
+}
+
+
+/*========================================
+           Story
+========================================*/
+
+#story {
+    background: $blue-primary;
+    .col-md-6 {
+        padding: 0;
+    }
+    .story-bg {
+        background-image: url(../img/success.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 480px;
+    }
+    .story-content {
+        padding: 40px;
+        color: $white;
+        .story-quote {
+            font-size: 24px;
+            margin: 35px 0;
+            font-style: italic;
+        }
+        .btn {
+            margin-top: 35px;
+        }
+    }
+}
+
+
+/*========================================
+           Services
+========================================*/
+
+#services {
+    text-align: center;
+    .icon-box {
+        margin-top: 60px;
+        i {
+            font-size: 46px;
+            color: $red-primary;
+        }
+        h4 {
+            margin: 25px 0;
+        }
+    }
+}
+
+
+/*========================================
+           Features
+========================================*/
+
+#features {
+    background: $blue-primary;
+    color: $white;
+    padding: 80px 0;
+    .media {
+        margin: 35px 0;
+        i {
+            color: $white;
+            font-size: 46px;
+            margin-right: 25px;
+        }
+    }
+    img {
+        margin-top: 80px;
+    }
+}
+
+
+/*========================================
+           Contact
+========================================*/
+
+#contact {
+    text-align: center;
+    .contact-info {
+        position: relative;
+        top: 100px;
+        z-index: 1;
+        background: $blue-primary;
+        box-shadow: 0px 0px 60px 0px rgba(68, 197, 238, .6);
+        padding: 30px;
+        color: $white;
+        i {
+            font-size: 46px;
+        }
+    }
+    // Google Map
+    #map {
+        width: 100%;
+        height: 500px;
+    }
+    // Contact Forms
+    .contact-forms {
+        h2 {
+            margin-bottom: 40px;
+        }
+        padding: 80px 0;
+        input:focus {
+            border-color: $blue-primary;
+        }
+        .form-control {
+            font-size: 16px;
+            padding: 20px 15px;
+            color: #555;
+            background-color: #fff;
+            border-radius: 3px;
+            border: 2px solid #999;
+            height: 38px;
+            box-shadow: none !important;
+            margin: 30px 0;
+        }
+        textarea {
+            height: 118px !important;
+            resize: none;
+            margin: 0;
+        }
+    }
+}
+
+
+/*========================================
+           Footer
+========================================*/
+
+footer {
+    background: $blue-primary;
+    color: $white;
+    padding: 40px 0;
+    hr {
+        margin: 40px 0;
+    }
+    img {
+        width: 50px;
+    }
+    ul {
+        padding: 0;
+    }
+    li {
+        display: inline-block;
+        a {
+            font-size: 20px;
+            padding: 12px;
+            color: $white;
+            transition: 0.4s;
+        }
+        a:hover,
+        a:focus,
+        a:active {
+            color: $base-typo;
+        }
+    }
+}
