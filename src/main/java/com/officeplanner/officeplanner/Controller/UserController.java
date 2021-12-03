@@ -1,67 +1,134 @@
 package com.officeplanner.officeplanner.Controller;
 
+import com.officeplanner.officeplanner.Authentication.CustomUserDetails;
 import com.officeplanner.officeplanner.Dao.UserRepository;
+import com.officeplanner.officeplanner.Model.Role;
 import com.officeplanner.officeplanner.Model.User;
 import com.officeplanner.officeplanner.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
 public class UserController {
-@Autowired
-    private UserService userService;
 
-@Autowired
-    private UserRepository userRepository;
-
-@GetMapping("/add_user")
-    public String showUserAddForm(Model model)
-    {
-        model.addAttribute("user", new User());
-        return "add_user";
+    /*-----------------------------------------------------------------------------------*/
+    //AUTOWIRING THE USER SERVICE
+    //AUTOWIRING THE USER REPOSITORY
+    /*------------------------------------------------------------------------------------*/
+    private final UserService userService;
+    private final UserRepository userRepository;
+    @Autowired
+    public UserController(UserService userService, UserRepository userRepository) {
+        this.userService = userService;
+        this.userRepository = userRepository;
     }
 
-    @PostMapping("/create_user")
-    public String userCreate(User user)
-    {
+    /*-------------------------------------------------------------------------------------------*/
+    //MAPPINGS
+    //LISTING USERS IN THE USER MANAGEMENT PAGE
 
-        userRepository.save(user);
-        return "index";
-    }
+/*---------------------------------------------------------------------------------------------*/
+                   /*FOR NEW USERS BEING REGISTERED*/
 
+    //VIEWING USERS
+    @RequestMapping("/UserManagement")
+    public String viewUsersList(Model model) {
 
-    @GetMapping("/list_user")
-    public String viewUsersList(Model model)
-    {
-        List<User> listUsers = userRepository.findAll();
+        //New Registered Users
+        List<User> listUsers = userService.listAll();
         model.addAttribute("listUsers", listUsers);
-        return "list_users";
 
+        //Current Users
+        List<User> currentUsers = userService.listCurrentUsers();
+        model.addAttribute("currentUsers", currentUsers);
+        return "UserManagement";
+    }
+
+  //CREATING NEW USER
+    @RequestMapping("/new")
+    public String createNewUser(Model model){
+        User user = new User();
+        model.addAttribute("user", user);
+
+        return "newUser";
     }
 
 
-    @RequestMapping("")
-    public ModelAndView showEditUser(@PathVariable(name="user_id")Integer user_id){
-        ModelAndView umv = new ModelAndView("edit_user");
-        User user = userRepository.getById(user_id);
+    //SAVING THE NEW USER THAT HAS BEEN CREATED
+
+    @PostMapping( "/save")
+    public String saveUser(User user){
+        userService.saveUser(user);
+
+        return "UserManagement";
+    }
+
+
+
+// EDITING THE USER
+    @GetMapping("/edit/{user_id}")
+    /*
+    public String editUser(@PathVariable("user_id") int user_id, Model model){
+        User user = userService.editedUser(user_id);
+        List<Role> listRoles = userService.listRoles();
+        model.addAttribute("user", user);
+        model.addAttribute("listRoles", listRoles);
+
+        return "editUser";
+    }
+*/
+    public ModelAndView editUser(@PathVariable(name="user_id")int user_id){
+        ModelAndView umv = new ModelAndView("editUser");
+        User user = userService.editedUser(user_id);
+        List<Role> listRoles = userService.listRoles();
         umv.addObject("user",user);
+        umv.addObject("listRoles", listRoles);
         return umv;
     }
 
-    @GetMapping("/delete_user/{user_id}")
+
+
+//DELETING THE USER
+
+    @RequestMapping("/delete/{user_id}")
     public String deleteUser(@PathVariable(name="user_id")Integer user_id)
     {
-        userRepository.deleteById(user_id);
-        return "list_users";
+        userService.deleteUser(user_id);
+        return "dashboard";
 
     }
+
+/*-------------------------------------------------------------------------------------------------------*/
+    //FOR REGISTERING USERS
+/*-------------------------------------------------------------------------------------------------------*/
+    @GetMapping("/processRegister")
+    public String register(Model model){
+        User user = new User();
+        model.addAttribute("user", user);
+        return "Registration";
+    }
+
+    @PostMapping("/processRegister")
+    public String registeringUser(@ModelAttribute("user") User user, BindingResult result){
+
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    String encodedPassword = passwordEncoder.encode(user.getPassword());
+    user.setPassword(encodedPassword);
+    if (result.hasErrors()){
+        return "Registration";
+    }else {
+        userRepository.save(user);
+    }
+    return "register_success";
+  }
+
 
 }

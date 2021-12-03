@@ -139,9 +139,10 @@
                 <li class="scroll"><a href="#contact">Contact</a></li>
 
                 <li class="button-holder">
+                    <a th:href="@{/login}">
 
-                    <button type="button" class="btn btn-blue navbar-btn" data-toggle="modal" data-target="#SignIn">Sign in</button>
-
+                    <button type="button" class="btn btn-blue navbar-btn" data-toggle="modal" data-target="#SignIn">login</button>
+                    </a>
                 </li>
 
             </ul>
@@ -188,60 +189,59 @@
 
             <!-- Sign Up -->
 
-            <div class="col-md-5 col-md-offset-1">
-                <div class="signup">
-                    <form class="signup-form">
+<!--            <div class="col-md-5 col-md-offset-1">-->
+<!--                <div class="signup">-->
+<!--                    <form th:action="@{/processRegister}" class="signup-form" >-->
 
-                        <h2 class="text-center">Create Account</h2>
+<!--                        <h2 class="text-center">Create Account</h2>-->
 
-                        <hr>
+<!--                        <hr>-->
 
-                        <div class="form-group">
+<!--                        <div class="form-group">-->
 
-                            <input type="text" class="form-control" placeholder="First Name" required="required">
+<!--                            <input type="text"  class="form-control" placeholder="First Name" required="required" >-->
 
-                        </div>
+<!--                        </div>-->
 
-                        <div class="form-group">
+<!--                        <div class="form-group">-->
 
-                            <input type="text" class="form-control" placeholder="Last Name" required="required">
+<!--                            <input type="text" class="form-control" placeholder="Last Name" required="required" >-->
 
-                        </div>
+<!--                        </div>-->
 
 
-                        <div class="form-group">
+<!--                        <div class="form-group">-->
 
-                            <input type="email" class="form-control" placeholder="Email Address" required="required">
+<!--                            <input type="email" class="form-control" placeholder="Email Address" required="required" >-->
 
-                        </div>
+<!--                        </div>-->
 
-                        <div class="form-group">
+<!--                        <div class="form-group">-->
 
-                            <input type="text" class="form-control" placeholder="Organization" required="required">
+<!--                            <input type="text" class="form-control" placeholder="Contact" required="required">-->
 
-                        </div>
+<!--                        </div>-->
 
-                        <div class="form-group">
+<!--                        <div class="form-group">-->
 
-                            <input type="text" class="form-control" placeholder="Password" required="required">
+<!--                            <input type="password" class="form-control" placeholder="Password" required="required" >-->
+<!--                        </div>-->
 
-                        </div>
+<!--                        <div class="form-group">-->
 
-                        <div class="form-group">
+<!--                            <input type="password" class="form-control" placeholder="Confirm Password" required="required" >-->
 
-                            <input type="text" class="form-control" placeholder="Confirm Password" required="required">
+<!--                        </div>-->
 
-                        </div>
+<!--                        <div class="form-group text-center">-->
 
-                        <div class="form-group text-center">
+<!--                            <button type="submit" class="btn btn-blue btn-block">Create Account</button>-->
 
-                            <button type="submit" class="btn btn-blue btn-block">Create Account</button>
+<!--                        </div>-->
 
-                        </div>
-
-                    </form>
-                </div>
-            </div>
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
 
         </div>
 
@@ -963,7 +963,7 @@
 
             <div class="footer-caption">
 
-                <img src="assets/img/logo.png" class="img-responsive center-block" alt="logo">
+                <img th:src="@{/assets/img/logo.png}" class="img-responsive center-block" alt="logo">
 
                 <hr>
 
@@ -997,8 +997,6 @@
 
 ========================================-->
 
-
-
 <!-- Modal -->
 
 <div class="modal fade" id="SignIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -1011,30 +1009,30 @@
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-                    <h4 class="modal-title text-center" id="myModalLabel">Login</h4>
+                    <h4 class="modal-title text-center" id="myModalLabel">LOGIN</h4>
 
                 </div>
 
                 <div class="modal-body">
 
 
-                    <form class="signup-form">
+                    <form class="signup-form" >
 
                         <div class="form-group">
 
-                            <input type="text" class="form-control" placeholder="Email" required="required">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required="required">
 
                         </div>
 
                         <div class="form-group">
 
-                            <input type="text" class="form-control" placeholder="Password" required="required">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required="required">
 
                         </div>
 
                         <div class="form-group text-center">
 
-                            <button type="submit" class="btn btn-blue btn-block">Log In</button>
+                            <button type="submit" class="btn btn-blue btn-block">Login</button>
 
                         </div>
 
@@ -1044,9 +1042,9 @@
 
                 <div class="modal-footer text-center">
 
-                    <a href="#">Forgot your password /</a>
+                    <a th:href="@{/forgotPassword}">Forgot your password /</a>
 
-                    <a href="#">Login</a>
+                    <a href="#">create account</a>
 
                 </div>
             </div>

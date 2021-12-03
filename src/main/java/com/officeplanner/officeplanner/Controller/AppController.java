@@ -1,32 +1,54 @@
 package com.officeplanner.officeplanner.Controller;
 
 import com.officeplanner.officeplanner.Dao.UserRepository;
+import com.officeplanner.officeplanner.Model.User;
 import com.officeplanner.officeplanner.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppController {
- @Autowired
-    private UserService userService;
 
-private final UserRepository userRepository;
+    /*-----------------------------------------------------------------------------------------*/
+    //AUTOWIRING USER SERVICE
+    //AUTOWIRING USER REPOSITORY
+    /*-----------------------------------------------------------------------------------------*/
+    @Autowired
+    private UserService userService;
 @Autowired
-    public AppController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+private UserRepository userRepository;
+
+/*------------------------------------------------------------------------------------------------*/
+    //MAPPING
+/*------------------------------------------------------------------------------------------------*/
+//LOGIN MAPPING
+    //AND TO PREVENT THE USER FROM GOING BACK TO THE LOGIN PAGE
+    //IF THEY ARE ALREADY LOGGED IN
+    @GetMapping("/login")
+    public String loginPage(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return "login";
+        }
+        return "redirect:/";
     }
 
-    @GetMapping ("/index")
-    public String viewHomePage()
+//INDEX MAPPING
+    @RequestMapping (value = "/index")
+    public String viewHomePage(Model model)
     {
         return "index";
     }
-    /*
-    @GetMapping("/login")
-    public String loginPage(){
-        return "login";
-    }
-     */
+
+
 }

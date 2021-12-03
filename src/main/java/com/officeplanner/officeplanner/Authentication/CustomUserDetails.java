@@ -2,6 +2,7 @@ package com.officeplanner.officeplanner.Authentication;
 
 import com.officeplanner.officeplanner.Model.Role;
 import com.officeplanner.officeplanner.Model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,11 +13,14 @@ import java.util.List;
 import java.util.Set;
 
 public class CustomUserDetails implements UserDetails{
-    private User user;
+
+    private final User user;
 
     public CustomUserDetails(User user) {
+
         this.user = user;
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -43,6 +47,7 @@ public class CustomUserDetails implements UserDetails{
         return true;
     }
 
+
     @Override
     public boolean isAccountNonLocked() {
         return true;
@@ -55,13 +60,22 @@ public class CustomUserDetails implements UserDetails{
 
     @Override
     public boolean isEnabled() {
-        return user.isEnabled();
+        return true;
     }
 
+
+    public User getUser(){
+        return user;
+    }
 
     public String getFullName() {
-        return user.getFirstName() + " " + user.getLastName();
+//        return user.getFirstName() + " " + user.getLastName();
+        return this.user.getFullName();
 
     }
+
+
+
+
 
 }

@@ -1,6 +1,9 @@
 package com.officeplanner.officeplanner;
 
+import com.officeplanner.officeplanner.Dao.RoleRepository;
 import com.officeplanner.officeplanner.Dao.UserRepository;
+import com.officeplanner.officeplanner.Model.Role;
+import com.officeplanner.officeplanner.Model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -8,40 +11,80 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @DataJpaTest
-
-//This test is configured to work with the actual database
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-
-//Used to commit the changes
 @Rollback(false)
 public class UserRepositoryTests {
+
+/*-------------------------------------------------------------------------------------------------*/
+    //AUTOWIRING
+/*-------------------------------------------------------------------------------------------------*/
 @Autowired
-/*TestEntityManager is a wrapper of JPA's EntityManager so we can use it in test class like a
-standard EntityManager*/
     private TestEntityManager entityManager;
 
 @Autowired
-    private UserRepository repo;
-/*
-//test methods go below
-@Test
-//this test method persists a user object into the database
+    private UserRepository userRepository;
+
+@Autowired
+private RoleRepository roleRepository;
+
+/*---------------------------------------------------------------------------------------------------*/
+    //TEST METHODS
+/*---------------------------------------------------------------------------------------------------*/
+    //CREATE USER
+    @Test
     public void testCreateUser(){
-    User user = new User();
-    user.setEmail("muturi@gmail.com");
-    user.setPassword("muturi");
-    user.setFirstName("Muturi");
-    user.setLastName("Kimondo");
-    user.setContact(0723146434);
+        User user = new User();
+        user.setEmail("marvinkamwenjih@gmail.com");
+        user.setPassword("marvin");
+        user.setFirstName("Marvin");
+        user.setLastName("Kamwenji");
 
+        User savedUser = userRepository.save(user);
 
+        User existUser = entityManager.find(User.class, savedUser.getUser_id());
+        assertThat (user.getEmail()).isEqualTo(existUser.getEmail());
 
-User savedUser = repo.save(user);
+    }
 
-User existUser = entityManager.find(User.class, savedUser.getUser_id());
+    @Test
+    public void testFindUserByEmail(){
+        String email = "marvin@gmail.com";
+        User user = userRepository.findByEmail(email);
+        assertThat(user).isNotNull();
+    }
 
-}
-*/
+    //ADD ROLES
+    @Test
+     public void testAddRoleToNewUser(){
+        Role roleAdmin = roleRepository.findByName("Admin");
+        User user = new User();
+        user.setEmail("massarvinmaffylap@gmail.com");
+        user.setPassword("massarvin");
+        user.setFirstName("massarvin");
+        user.setLastName("maffylap");
+        user.setContact(254);
 
+        user.addRole(roleAdmin);
+
+        User savedUser = userRepository.save(user);
+        assertThat(savedUser.getRoles().size()).isEqualTo(1);
+    }
+
+    //EXISTING USERS
+    @Test
+    public void testAddRoleToExistingUser(){
+        User user = userRepository.findById(6).get();
+
+        Role roleUser = roleRepository.findByName("User");
+        Role roleOfficer = new Role(12);
+        user.addRole(roleUser);
+        user.addRole(roleOfficer);
+
+        User savedUser = userRepository.save(user);
+
+        assertThat(savedUser.getRoles().size()).isEqualTo(2);
+    }
 }
