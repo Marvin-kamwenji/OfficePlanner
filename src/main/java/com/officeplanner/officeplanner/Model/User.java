@@ -30,6 +30,8 @@ public class User {
     private String email;
     private Integer contact;
     private String password;
+    @Transient
+    private String confirmPassword;
     private boolean enabled;
     private String resetPasswordToken;
     @Lob

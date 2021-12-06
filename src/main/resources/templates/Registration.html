@@ -1,114 +1,54 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>register</title>
-
-    <!-- // PLUGINS (css files) // -->
-
-    <link th:href="@{/assets/js/plugins/bootsnav_files/skins/color.css}" rel="stylesheet">
-
-    <link th:href="@{/assets/js/plugins/bootsnav_files/css/animate.css}" rel="stylesheet">
-
-    <link th:href="@{/assets/js/plugins/bootsnav_files/css/bootsnav.css}" rel="stylesheet">
-
-    <link th:href="@{/assets/js/plugins/bootsnav_files/css/overwrite.css}" rel="stylesheet">
-
-    <link th:href="@{/assets/js/plugins/owl-carousel/owl.carousel.css}" rel="stylesheet">
-
-    <link th:href="@{/assets/js/plugins/owl-carousel/owl.theme.css}" rel="stylesheet">
-
-    <link th:href="@{/assets/js/plugins/owl-carousel/owl.transitions.css}" rel="stylesheet">
-
-    <link th:href="@{/assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/magnific-popup.css}" rel="stylesheet">
-
-    <!--// ICONS //-->
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!--// BOOTSTRAP & Main //-->
-
-    <link th:href="@{/assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css}" rel="stylesheet">
-
-    <link th:href="@{/assets/css/main.css}" rel="stylesheet">
-    <!--    <link href="assets/css/main.css" rel="stylesheet">-->
+    <meta charset="utf-8">
+    <title>Registration form</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" th:href="@{/RegistrationCss/css/nunito-font.css}">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" th:href="@{/RegistrationCss/css/style.css}"/>
 </head>
-<body>
- Sign Up
-
-            <div class="col-md-5 col-md-offset-1">
-                <div class="signup">
-                    <form th:action="@{/processRegister}" th:object="${user}" class="signup-form" >
-
-                        <h2 class="text-center">Create Account</h2>
-
-                        <hr>
-
-                        <div class="form-group">
-
-                            <input type="text"  class="form-control" placeholder="First Name" th:field="*{firstName}" required="required" >
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <input type="text" class="form-control" placeholder="Last Name" th:field="*{lastName}" required="required" >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <input type="email" class="form-control" placeholder="Email Address" th:field="*{email}" required="required" >
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <input type="text" class="form-control" placeholder="Contact" th:field="*{contact}" required="required">
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <input type="password" class="form-control" placeholder="Password" th:field="*{password}" required="required" >
-                        </div>
-
-                        <div class="form-group">
-
-                            <input type="password" class="form-control" placeholder="Confirm Password" th:field="*{password}" required="required" >
-
-                        </div>
-
-                        <div class="form-group text-center">
-
-                            <button type="submit" class="btn btn-blue btn-block">Create Account</button>
-
-                        </div>
-
-                    </form>
+<body class="form-v9">
+<div class="page-content">
+    <div class="form-v9-content" style="background-image: url('RegistrationCss/images/form-v9.jpg')">
+        <form class="form-detail" th:action="process_register" th:object="${user}" method="post">
+            <h2>Create Account</h2>
+            <div class="form-row-total">
+                <div class="form-row">
+                    <input type="text" th:field="*{firstName}"  name="first-name" id="first-name" class="input-text" placeholder="First Name" required>
+                </div>
+                <div class="form-row">
+                    <input type="text" th:field="*{lastName}" name="last-name" id="last-name" class="input-text" placeholder="Last Name" required>
                 </div>
             </div>
+            <div class="form-row-total">
+                <div class="form-row">
+                    <input type="email" th:field="*{email}" name="your-email" id="your-email" class="input-text" placeholder="Your Email" required>
+                </div>
+                <div class="form-row">
+                    <input type="text" th:field="*{contact}" name="contact" id="contact" class="input-text" placeholder="Contact" required>
+                </div>
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            </div>
 
- <!-- Include all compiled plugins (below), or include individual files as needed -->
-
- <script th:src="@{/assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
-
- <script th:src="@{/assets/js/plugins/owl-carousel/owl.carousel.min.js}"></script>
-
- <script th:src="@{/assets/js/plugins/bootsnav_files/js/bootsnav.js}"></script>
-
- <script th:src="@{/assets/js/plugins/typed.js-master/typed.js-master/dist/typed.min.js}"></script>
-
- <script src="https://maps.googleapis.com/maps/api/js"></script>
-
- <script th:src="@{/assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/jquery.magnific-popup.js}"></script>
-
- <script th:src="@{/assets/js/main.js}"></script>
+            <div class="form-row-total">
+                <!-- <div class="form-row">
+                    <input type="text" name="your-email" id="your-email" class="input-text" placeholder="Your Email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+                </div> -->
+                <div class="form-row">
+                    <input type="password" th:field="*{password}" name="password" id="password" class="input-text" placeholder="Your Password" required>
+                </div>
+                <div class="form-row">
+                    <input type="password" th:field="*{password}" name="confirm-password" id="confirm-password" class="input-text" placeholder="Confirm Password" required>
+                </div>
+            </div>
+            <div class="form-row-last">
+                <input type="submit" name="register" class="register" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>

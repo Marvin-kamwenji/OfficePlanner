@@ -125,8 +125,9 @@ public class UserController {
     if (result.hasErrors()){
         return "Registration";
     }else {
-        userRepository.save(user);
+        userService.saveUser(user);
     }
+
     return "register_success";
   }
 
