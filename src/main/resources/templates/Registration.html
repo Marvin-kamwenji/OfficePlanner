@@ -13,7 +13,7 @@
 <body class="form-v9">
 <div class="page-content">
     <div class="form-v9-content" style="background-image: url('RegistrationCss/images/form-v9.jpg')">
-        <form class="form-detail" th:action="process_register" th:object="${user}" method="post">
+        <form class="form-detail" th:action="@{/processRegister}" th:object="${user}" method="post">
             <h2>Create Account</h2>
             <div class="form-row-total">
                 <div class="form-row">
@@ -41,7 +41,7 @@
                     <input type="password" th:field="*{password}" name="password" id="password" class="input-text" placeholder="Your Password" required>
                 </div>
                 <div class="form-row">
-                    <input type="password" th:field="*{password}" name="confirm-password" id="confirm-password" class="input-text" placeholder="Confirm Password" required>
+                    <input type="password" th:field="*{confirmPassword}" name="confirm-password" id="confirm-password" class="input-text" placeholder="Confirm Password" required>
                 </div>
             </div>
             <div class="form-row-last">

@@ -38,7 +38,8 @@ public class ForgotPasswordController {
  /*------------------------------------------------------------------------------------------------------*/
 
   @GetMapping("/forgotPassword")
-  public String showForgotPasswordForm(){
+  public String showForgotPasswordForm(Model model){
+      model.addAttribute("user", new User());
       return "forgotPassword";
   }
 

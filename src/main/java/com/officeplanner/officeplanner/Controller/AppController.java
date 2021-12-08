@@ -50,5 +50,11 @@ private UserRepository userRepository;
         return "index";
     }
 
+    @GetMapping("/register")
+    public String showRegistrationPage(Model model){
+        model.addAttribute("user", new User());
+        return "Registration";
+    }
+
 
 }
