@@ -4,13 +4,19 @@ import com.officeplanner.officeplanner.Dao.RoleRepository;
 import com.officeplanner.officeplanner.Dao.UserRepository;
 import com.officeplanner.officeplanner.Model.Role;
 import com.officeplanner.officeplanner.Model.User;
+import net.bytebuddy.utility.RandomString;
 import org.apache.catalina.UserDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +42,9 @@ public class UserService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
  /*----------------------------------------------------------------------------------------------------------*/
     //CRUD PROCESSES
@@ -174,8 +183,45 @@ public class UserService {
     }
 
     /*--------------------------------------------------------------------------------------------------*/
-    //REGISTRATION OF A NEW USER
+    //REGISTRATION OF A NEW USER WITH EMAIL VERIFICATION
     /*-------------------------------------------------------------------------------------------------*/
 
-
+//   public void register(User user, String siteURL)
+//   throws UnsupportedEncodingException, MessagingException {
+//       String encodedPassword = passwordEncoder.encode(user.getPassword());
+//       user.setPassword(encodedPassword);
+//
+//       String randomCode = RandomString.make(64);
+//       user.setVerificationCode(randomCode);
+//       user.setEnabled(false);
+//
+//       userRepository.save(user);
+//
+//       sendVerificationEmail(user, siteURL);
+//   }
+//
+//   private void sendVerificationEmail(User user, String siteURL)
+//   throws MessagingException, UnsupportedEncodingException{
+//       String toAddress = user.getEmail();
+//       String fromAddress = "meetingofficeplannerr@gmail.com";
+//       String senderName = "Meeting Office Planner ";
+//       String subject = "Kindly verify your registration";
+//       String content = "Welcome [[name]], <br>"
+//               +"Thanks for joining meeting office planner, the largest community" +
+//               "of meeting planners!! Click below to verify your email address and activate " +
+//               "your account: <br>"
+//               +"<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"
+//               +"Thank you, <br>"
+//               +"Meeting Office Planner.";
+//
+//       MimeMessage message = mailSender.createMimeMessage();
+//       MimeMessageHelper helper = new MimeMessageHelper(message);
+//
+//       helper.setFrom(fromAddress, senderName);
+//       helper.setTo(toAddress);
+//       helper.setSubject(subject);
+//
+//
+//
+//   }
 }

@@ -36,6 +36,8 @@ public class User {
     private String resetPasswordToken;
     @Lob
     private String image;
+    @Column (length=64)
+    private String verificationCode;
 
     //LOCKING FAILED LOGIN ATTEMPTS PROPERTIES
     private boolean accountNonLocked;

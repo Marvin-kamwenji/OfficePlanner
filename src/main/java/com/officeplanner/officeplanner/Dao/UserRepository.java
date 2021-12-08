@@ -20,4 +20,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Modifying
     public void updateFailedAttempts(int failAttempts,String email);
 
+    @Query("SELECT u FROM User u WHERE u.verificationCode = ?1")
+    public User findByVerificationCode(String code);
+
 }
