@@ -6,6 +6,7 @@ import com.officeplanner.officeplanner.Model.Role;
 import com.officeplanner.officeplanner.Model.User;
 import com.officeplanner.officeplanner.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Controller
@@ -66,6 +70,9 @@ public class UserController {
 
     @PostMapping( "/save")
     public String saveUser(User user){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
+        String encoder = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encoder);
         userService.saveUser(user);
 
         return "UserManagement";
@@ -117,18 +124,32 @@ public class UserController {
     }
 
     @PostMapping("/processRegister")
-    public String registeringUser(@ModelAttribute("user") User user, BindingResult result){
-
+    public String processRegister(User user, HttpServletRequest request)
+    throws UnsupportedEncodingException, MessagingException
+    {
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     String encodedPassword = passwordEncoder.encode(user.getPassword());
     user.setPassword(encodedPassword);
-    if (result.hasErrors()){
-        return "Registration";
-    }else {
-        userService.saveUser(user);
-    }
+    userService.register(user, getSiteURL(request));
+
+    userRepository.save(user);
 
     return "register_success";
+  }
+
+  private String getSiteURL (HttpServletRequest request){
+        String siteURL = request.getRequestURL().toString();
+        return siteURL.replace(request.getServletPath(),"");
+
+  }
+
+  @GetMapping("/verify")
+    public String verifyUser(@Param("code") String code){
+     if (userService.verify(code)){
+         return "verify_success";
+     }  else {
+         return "verify_fail";
+     }
   }
 
 

@@ -15,10 +15,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Controller
-public class AppController {
+public class AppController implements WebMvcConfigurer {
 
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/dash").setViewName("dashboard");
+    }
     /*-----------------------------------------------------------------------------------------*/
     //AUTOWIRING USER SERVICE
     //AUTOWIRING USER REPOSITORY
@@ -40,7 +46,7 @@ private UserRepository userRepository;
         if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return "login";
         }
-        return "redirect:/";
+        return "redirect:/dash";
     }
 
 //INDEX MAPPING
@@ -55,6 +61,5 @@ private UserRepository userRepository;
         model.addAttribute("user", new User());
         return "Registration";
     }
-
 
 }

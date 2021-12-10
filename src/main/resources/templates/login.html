@@ -4,25 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Login page</title>
-    <link th:href="@{/style.css}" rel="stylesheet">
+    <link th:href="@{/assets/css/main.css}" rel="stylesheet">
 </head>
 <body>
-<div class="login">
+<section id="home">
+    <div class="col-md-5 col-md-offset-1">
+<div class="signup">
     <div class="form">
-        <h2>Welcome</h2>
-        <form th:action="@{/login}" method="post" style="max-width: 400px; margin: 0 auto">
+
+
+        <form th:action="@{/login}" class="signup-form" method="post" style="max-width: 400px; margin: 0 auto">
+            <h2 class="text-center">Welcome</h2>
+            <hr>
+           <div class="form-group">
             <input type="email" placeholder="Email" name="email" required>
+           </div>
+
+            <div class="form-group">
             <input type="password" placeholder="Password" name="password"  required>
-            <input type="submit" value="Login" class="submit">
-            <a th:href="@{/forgotPassword}">Forgot password? /</a>
-            <a th:href="@{/Registration}">create account</a>
+            </div>
+            <br>
+
+            <div class="form-control">
+                <a th:href="@{/forgotPassword}">Forgot password? </a>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <br>
+            <span>
+            <div class="form-group" >
+                <input type="submit" class="btn btn-blue btn-block" value="Login">
+                <h3>OR</h3>
+                <h4><a th:href="@{/processRegister}">create account</a></h4>
+            </div>
+
+            </span>
+            <br>
+            <br>
         </form>
-
-
 
     </div>
 </div>
-
+    </div>
+</section>
 
 
 </body>

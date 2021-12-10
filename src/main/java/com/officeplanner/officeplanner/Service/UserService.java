@@ -186,42 +186,67 @@ public class UserService {
     //REGISTRATION OF A NEW USER WITH EMAIL VERIFICATION
     /*-------------------------------------------------------------------------------------------------*/
 
-//   public void register(User user, String siteURL)
-//   throws UnsupportedEncodingException, MessagingException {
-//       String encodedPassword = passwordEncoder.encode(user.getPassword());
-//       user.setPassword(encodedPassword);
-//
-//       String randomCode = RandomString.make(64);
-//       user.setVerificationCode(randomCode);
-//       user.setEnabled(false);
-//
-//       userRepository.save(user);
-//
-//       sendVerificationEmail(user, siteURL);
-//   }
-//
-//   private void sendVerificationEmail(User user, String siteURL)
-//   throws MessagingException, UnsupportedEncodingException{
-//       String toAddress = user.getEmail();
-//       String fromAddress = "meetingofficeplannerr@gmail.com";
-//       String senderName = "Meeting Office Planner ";
-//       String subject = "Kindly verify your registration";
-//       String content = "Welcome [[name]], <br>"
-//               +"Thanks for joining meeting office planner, the largest community" +
-//               "of meeting planners!! Click below to verify your email address and activate " +
-//               "your account: <br>"
-//               +"<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"
-//               +"Thank you, <br>"
-//               +"Meeting Office Planner.";
-//
-//       MimeMessage message = mailSender.createMimeMessage();
-//       MimeMessageHelper helper = new MimeMessageHelper(message);
-//
-//       helper.setFrom(fromAddress, senderName);
-//       helper.setTo(toAddress);
-//       helper.setSubject(subject);
-//
-//
-//
-//   }
+   public void register(User user, String siteURL)
+   throws UnsupportedEncodingException, MessagingException {
+       String encodedPassword = passwordEncoder.encode(user.getPassword());
+       user.setPassword(encodedPassword);
+
+       String randomCode = RandomString.make(64);
+       user.setVerificationCode(randomCode);
+       user.setEnabled(false);
+
+       userRepository.save(user);
+
+       sendVerificationEmail(user, siteURL);
+   }
+
+   private void sendVerificationEmail(User user, String siteURL)
+   throws MessagingException, UnsupportedEncodingException{
+       String toAddress = user.getEmail();
+       String fromAddress = "meetingofficeplannerr@gmail.com";
+       String senderName = "Meeting Office Planner ";
+       String subject = "Kindly verify your registration";
+       String content = "Welcome [[name]], <br>"
+               +"Thanks for joining meeting office planner, the largest community" +
+               "of meeting planners!! Click below to verify your email address and activate " +
+               "your account: <br>"
+               +"<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"
+               +"if you didn't request this code, you can safely ignore this email."
+               +"Someone else might have typed your email address by mistake"
+               +"Thank you, <br>"
+               +"Meeting Office Planner.";
+
+       MimeMessage message = mailSender.createMimeMessage();
+       MimeMessageHelper helper = new MimeMessageHelper(message);
+
+       helper.setFrom(fromAddress, senderName);
+       helper.setTo(toAddress);
+       helper.setSubject(subject);
+
+       content = content.replace("[[name]]", user.getFullName());
+       String verifyURL = siteURL + "/verify?code=" + user.getVerificationCode();
+
+       content = content.replace("[[URL]]", verifyURL);
+
+       helper.setText(content, true);
+
+       mailSender.send(message);
+
+       System.out.println("Email has been sent");
+
+   }
+
+   public boolean verify(String verificationCode){
+       User user = userRepository.findByVerificationCode(verificationCode);
+
+       if (user == null || user.isEnabled()){
+           return false;
+       } else {
+           user.setVerificationCode(null);
+           user.setEnabled(true);
+           userRepository.save(user);
+
+           return true;
+       }
+   }
 }

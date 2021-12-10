@@ -36,8 +36,8 @@ public class Organization {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "organization_boardrooms",
-            joinColumns = @JoinColumn(name = "organization_id"),
-            inverseJoinColumns = @JoinColumn(name = "boardroom_id")
+            joinColumns = {@JoinColumn(name = "organization_id")},
+            inverseJoinColumns = {@JoinColumn(name = "boardroom_id")}
     )
     private Set<Boardroom> boardrooms = new HashSet<>();
 

@@ -58,11 +58,15 @@ public class User {
       private Set<Role> roles = new HashSet<>();
 
 
-
-
     public void addRole(Role role)
     {
         this.roles.add(role);
+    }
+
+    public String getFullName() {
+        User user = new User();
+       return user.getFirstName() + " " + user.getLastName();
+
     }
 
 

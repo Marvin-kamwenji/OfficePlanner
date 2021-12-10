@@ -491,29 +491,52 @@ nav.navbar.bootsnav.navbar-fixed .button-holder {
     background: url(https://media4.giphy.com/media/BHNfhgU63qrks/giphy.gif) center center no-repeat;
     background-size: cover;
     border-radius: 20px;
-    margin: 30px auto;
+    /*margin: 30px auto;*/
+    margin-right: 540px;
+    margin-left: 540px;
     color: white;
+    padding: 0px;
   }
   #home .signup-form {
-    padding: 45px;
+    /*padding: 45px;*/
     width: 100%;
     height: 100%;
-    padding: 15px 25px; }
+    /*padding: 15px 25px;*/ }
 
     #home .signup-form h2 {
       color: #FFF;
       text-align: center;
       font-weight: normal;
       font-size: 18px;
-      margin-top: 60px;
-      margin-bottom: 80px;}
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    #home .signup-form h3 {
+      color: #FFF;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+
+    }
+
+#home .signup-form a{
+  color: white;
+}
+
+#home .signup-form a:hover {
+  color:gold;
+}
+#home .signup-form h4 a{
+  margin-left: 120px;
+  font-size: 16px;
+}
     #home .signup-form input {
       width:100%;
       height: 40px;
       margin-top: 20px;
       background: black;
       border: 1px solid rgba(255, 255, 255, .1);
-      padding: 0 15px;
+      /*padding: 0 15px;*/
       color: #FFF;
       border-radius: 5px;
       font-size: 14px; }
@@ -529,13 +552,17 @@ nav.navbar.bootsnav.navbar-fixed .button-holder {
         background: rgba(255, 255, 255, .9);
         /* color: #444; */
         color: white;
-        font-size: 15px;
+        font-size: 16px;
         margin-top: 40px;
+        margin-left: 300px;
         font-weight: bold;
+        transition-duration: 0.4s;
+
       }
       #home .signup-form .form-control{
         color: white;
       }
+
 
 
       /*

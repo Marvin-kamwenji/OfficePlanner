@@ -68,11 +68,10 @@ public class CustomUserDetails implements UserDetails{
         return user;
     }
 
-    public String getFullName() {
-//        return user.getFirstName() + " " + user.getLastName();
-        return this.user.getFullName();
-
-    }
+//    public String getFullName() {
+//       return user.getFirstName() + " " + user.getLastName();
+//        return this.user.getFullName();
+    // }
 
 
 
