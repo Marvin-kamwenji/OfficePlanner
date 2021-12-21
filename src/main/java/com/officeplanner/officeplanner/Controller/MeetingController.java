@@ -46,7 +46,7 @@ public class MeetingController {
     public String saveMeeting(Meeting meeting){
         meetingService.saveMeeting(meeting);
 
-        return "EventManagement";
+        return "redirect:/EventManagement";
     }
 
     //EDITING/UPDATING MEETING
@@ -63,7 +63,7 @@ public class MeetingController {
     @RequestMapping("/deletemeeting/{meeting_id}")
     public String deleteMeeting(@PathVariable(name = "meeting_id") Integer meeting_id){
         meetingService.deleteMeeting(meeting_id);
-        return "EventManagement";
+        return "redirect:/EventManagement";
     }
 
 }

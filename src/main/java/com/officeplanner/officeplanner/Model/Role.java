@@ -2,6 +2,7 @@ package com.officeplanner.officeplanner.Model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -46,7 +47,16 @@ public class Role {
     //RELATIONSHIP BETWEEN ROLES AND USERS
 /*------------------------------------------------------------------------------------------------------*/
 @ManyToMany(mappedBy = "roles")
-private Set<User> users;
+private List<User> users;
+
+//PRIVILEDGES
+@ManyToMany
+@JoinTable(
+        name = "roles_privileges",
+        joinColumns = @JoinColumn(name = "role_id"),
+        inverseJoinColumns = @JoinColumn(name= "privilege_id")
+)
+private List<Privilege> privileges;
  /*------------------------------------------------------------------------------------------------------*/
     //GETTERS AND SETTERS
  /*------------------------------------------------------------------------------------------------------*/

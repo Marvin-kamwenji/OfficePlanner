@@ -2,6 +2,7 @@ package com.officeplanner.officeplanner.Model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,6 +32,12 @@ public class Resource {
         this.resource_quantity = resource_quantity;
         this.resource_available = resource_available;
     }
+
+    /*-------------------------------------------------------------------------------------------*/
+    //RELATIONSHIPS
+    /*-------------------------------------------------------------------------------------------*/
+    @ManyToMany(mappedBy = "resources")
+    private List<Boardroom> boardrooms;
 
 
     /*------------------------------------------------------------------------------------------*/

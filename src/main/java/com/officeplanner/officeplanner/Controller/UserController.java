@@ -75,7 +75,7 @@ public class UserController {
         user.setPassword(encoder);
         userService.saveUser(user);
 
-        return "UserManagement";
+        return "redirect:/UserManagement";
     }
 
 
@@ -109,7 +109,7 @@ public class UserController {
     public String deleteUser(@PathVariable(name="user_id")Integer user_id)
     {
         userService.deleteUser(user_id);
-        return "dashboard";
+        return "redirect:/UserManagement";
 
     }
 

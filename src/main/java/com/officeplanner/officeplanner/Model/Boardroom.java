@@ -41,9 +41,16 @@ public class Boardroom {
             joinColumns = @JoinColumn(name = "boardroom_id"),
             inverseJoinColumns = @JoinColumn(name = "resource_id")
     )
-    private Set<Resource> resources = new HashSet<>();
+    private Set<Resource> resources;
 
-
+   //BOARDROOMS AND MEETING MAPPING
+   @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   @JoinTable(
+           name = "boardroom_meetings",
+           joinColumns = @JoinColumn(name = "boardroom_id"),
+           inverseJoinColumns = @JoinColumn(name = "meeting_id")
+   )
+   private Set<Meeting> meetings;
 
 
     /*-----------------------------------------------------------------------------------------------*/

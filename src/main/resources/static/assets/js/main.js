@@ -74,60 +74,60 @@ $(document).ready(function () {
     });
 
     // Snazzy Maps
-    google.maps.event.addDomListener(window, 'load', init);
-
-    function init() {
-        // Basic options for a simple Google Map
-        // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-        var mapOptions = {
-            // How zoomed in you want the map to start at (always required)
-            zoom: 15,
-
-            // The latitude and longitude to center the map (always required)
-            center: new google.maps.LatLng(33.5912284, -7.5210958, 17.18), // Casablanca
-
-            // Disables the default Google Maps UI components
-            disableDefaultUI: true,
-            scrollwheel: false,
-
-            // How you would like to style the map. 
-            // This is where you would paste any style found on Snazzy Maps.
-            styles: [{
-                "stylers": [{
-                    "hue": "#f23c7e"
-                }, {
-                    "saturation": 150
-                }]
-            }, {
-                "featureType": "road",
-                "elementType": "geometry",
-                "stylers": [{
-                    "lightness": 50
-                }, {
-                    "visibility": "simplified"
-                }]
-            }, {
-                "featureType": "road",
-                "elementType": "labels",
-                "stylers": [{
-                    "visibility": "off"
-                }]
-            }]
-        };
-
-        // Get the HTML DOM element that will contain your map 
-        // We are using a div with id="map" seen below in the <body>
-        var mapElement = document.getElementById('map');
-
-        // Create the Google Map using out element and options defined above
-        var map = new google.maps.Map(mapElement, mapOptions);
-        var myLatLng = new google.maps.LatLng(33.592501, -7.522318);
-        // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Hello World!'
-        });
-    }
+    // google.maps.event.addDomListener(window, 'load', init);
+    //
+    // function init() {
+    //     // Basic options for a simple Google Map
+    //     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+    //     var mapOptions = {
+    //         // How zoomed in you want the map to start at (always required)
+    //         zoom: 15,
+    //
+    //         // The latitude and longitude to center the map (always required)
+    //         center: new google.maps.LatLng(33.5912284, -7.5210958, 17.18), // Casablanca
+    //
+    //         // Disables the default Google Maps UI components
+    //         disableDefaultUI: true,
+    //         scrollwheel: false,
+    //
+    //         // How you would like to style the map.
+    //         // This is where you would paste any style found on Snazzy Maps.
+    //         styles: [{
+    //             "stylers": [{
+    //                 "hue": "#f23c7e"
+    //             }, {
+    //                 "saturation": 150
+    //             }]
+    //         }, {
+    //             "featureType": "road",
+    //             "elementType": "geometry",
+    //             "stylers": [{
+    //                 "lightness": 50
+    //             }, {
+    //                 "visibility": "simplified"
+    //             }]
+    //         }, {
+    //             "featureType": "road",
+    //             "elementType": "labels",
+    //             "stylers": [{
+    //                 "visibility": "off"
+    //             }]
+    //         }]
+    //     };
+    //
+    //     // Get the HTML DOM element that will contain your map
+    //     // We are using a div with id="map" seen below in the <body>
+    //     var mapElement = document.getElementById('map');
+    //
+    //     // Create the Google Map using out element and options defined above
+    //     var map = new google.maps.Map(mapElement, mapOptions);
+    //     var myLatLng = new google.maps.LatLng(33.592501, -7.522318);
+    //     // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
+    //     var marker = new google.maps.Marker({
+    //         position: myLatLng,
+    //         map: map,
+    //         title: 'Hello World!'
+    //     });
+    // }
     
 });

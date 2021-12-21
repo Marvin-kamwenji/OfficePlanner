@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name = "meeting")
@@ -47,7 +48,11 @@ public class Meeting {
         this.description = description;
         this.attendees = attendees;
     }
-
+    /*-------------------------------------------------------------------------------------------*/
+    //RELATIONSHIPS
+    /*-------------------------------------------------------------------------------------------*/
+    @ManyToMany(mappedBy = "meetings")
+    private List<Boardroom> boardrooms;
 
     /*-------------------------------------------------------------------------------------------------*/
     //GETTERS AND SETTERS

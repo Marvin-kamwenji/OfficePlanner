@@ -62,16 +62,16 @@
         <!--ROLES-->
         <div class="form-group row">
             <label class="col-form-label col-4">Roles:</label>
-            <div class="col-8">
+            <div class="form-check">
                 <th:block th:each="role: ${listRoles}">
-                <input type="checkbox" class="form-control"  th:field="*{roles}"
-                       th:text="${role.name}" th:value="${role.id}"  minlength="2" maxlength="20"  />
+                <input type="checkbox" class="form-check-input"  th:field="*{roles} "
+                       th:text="${role.name}" th:value="${role.id}"  minlength="2" maxlength="20" checked  />
                 </th:block>
             </div>
         </div>
 
             <div>
-                <button type="submit" class="btn btn-primary">Edit User</button>
+                <button type="submit" class="btn btn-success">Edit User</button>
             </div>
     </form>
 </div>

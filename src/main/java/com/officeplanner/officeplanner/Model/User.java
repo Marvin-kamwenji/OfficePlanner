@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -55,7 +56,8 @@ public class User {
            joinColumns = @JoinColumn(name = "user_id"),
            inverseJoinColumns = @JoinColumn(name = "role_id")
    )
-      private Set<Role> roles = new HashSet<>();
+      private List<Role> roles;
+   //= new HashSet<>(); should be at the top
 
 
     public void addRole(Role role)
